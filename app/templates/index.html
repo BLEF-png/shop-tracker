@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учет продаж</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .product-card { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .sell-btn { background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Список товаров</h1>
+    {% for product in products %}
+        <div class="product-card">
+            <div>
+                <strong>{{ product.name }}</strong><br>
+                Остаток: {{ product.quantity }}
+            </div>
+            <form action="/sell/{{ product.id }}" method="post">
+                <button type="submit" class="sell-btn">Продать</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>
